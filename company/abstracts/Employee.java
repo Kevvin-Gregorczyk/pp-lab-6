@@ -1,8 +1,6 @@
 package company.abstracts;
 
-import company.interfaces.Employable;
-
-public abstract class Employee implements Employable {
+public class Employee {
     private String name;
     private double salary;
     private int id;
@@ -25,16 +23,18 @@ public abstract class Employee implements Employable {
         return salary;
     }
 
-    public String getHireDate() {
-        return hireDate;
-    }
-
-    public String getPosition() {
-        return position;
-    }
-
-    @Override
     public int hashCode() {
         return id;
+    }
+
+    public boolean equals(Object obj) {
+        if (obj == null || !(obj instanceof Employee)) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        Employee otherEmployee = (Employee) obj;
+        return this.id == otherEmployee.id;
     }
 }
